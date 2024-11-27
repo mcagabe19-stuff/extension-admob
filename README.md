@@ -104,6 +104,16 @@ To configure **extension-admob** for your project, follow these steps:
      admob.Admob.loadRewarded("ca-app-pub-XXXX/XXXXXXXXXX");
      ```
 
+   - **App Open Ad**
+     ```haxe
+     admob.Admob.onStatus.add(function(event:String, message:String):Void
+     {
+     	if (event == admob.AdmobEvent.APP_OPEN_LOADED)
+     		admob.Admob.showAppOpen();
+     });
+     admob.Admob.loadAppOpen("ca-app-pub-XXXX/XXXXXXXXXX");
+     ```
+
 ### Disclaimer
 
 [Google](http://unibrander.com/united-states/140279US/google.html) is a registered trademark of Google Inc.

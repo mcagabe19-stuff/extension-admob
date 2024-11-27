@@ -1,5 +1,6 @@
 package org.haxe.extension;
 
+import android.content.res.Configuration;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;

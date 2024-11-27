@@ -1,6 +1,5 @@
 package org.haxe.extension;
 
-import android.content.res.Configuration;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -432,7 +431,7 @@ public class Admob extends Extension
 			@Override
 			public void run()
 			{
-				AppOpenAd.load(mainContext, id, new AdRequest.Builder().build(), (mainActivity.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) ? AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT : AppOpenAd.APP_OPEN_AD_ORIENTATION_LANDSCAPE, new AppOpenAdLoadCallback()
+				AppOpenAd.load(mainContext, id, new AdRequest.Builder().build(), new AppOpenAdLoadCallback()
 				{
 					@Override
 					public void onAdLoaded(AppOpenAd ad)

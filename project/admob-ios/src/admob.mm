@@ -231,11 +231,7 @@ static void alignBanner(GADBannerView *bannerView, int align)
 {
 	self._ad = nil;
 
-	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-
-	GADAppOpenAdOrientation adOrientation = (UIInterfaceOrientationIsPortrait(orientation)) ? GADAppOpenAdOrientationPortrait : GADAppOpenAdOrientationLandscape
-
-	[GADAppOpenAd loadWithAdUnitID:[NSString stringWithUTF8String:adUnitID] request:[GADRequest request] orientation:adOrientation completionHandler:^(GADAppOpenAd *ad, NSError *error)
+	[GADAppOpenAd loadWithAdUnitID:[NSString stringWithUTF8String:adUnitID] request:[GADRequest request] completionHandler:^(GADAppOpenAd *ad, NSError *error)
 	{
 		if (error)
 		{

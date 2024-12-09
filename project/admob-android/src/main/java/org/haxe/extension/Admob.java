@@ -2,8 +2,7 @@ package org.haxe.extension;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.provider.Settings.Secure;
+import android.provider.Settings;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -120,7 +119,7 @@ public class Admob extends Extension
 			{
 				StringBuilder hexString = new StringBuilder();
 
-				for (byte b : MessageDigest.getInstance("MD5").digest(Secure.getString(mainActivity.getContentResolver(), Secure.ANDROID_ID).getBytes()))
+				for (byte b : MessageDigest.getInstance("MD5").digest(Settings.Secure.getString(mainActivity.getContentResolver(), Secure.ANDROID_ID).getBytes()))
 					hexString.append(String.format("%02x", b));
 
 				testDeviceIds.add(hexString.toString().toUpperCase());
@@ -505,7 +504,7 @@ public class Admob extends Extension
 
 	public static String getConsent()
 	{
-		return PreferenceManager.getDefaultSharedPreferences(mainContext).getString("IABTCF_PurposeConsents", "");
+		return mainContext.getSharedPreferences("default_prefs", Context.MODE_PRIVATE).getString("IABTCF_PurposeConsents", "");
 	}
 
 	public static boolean isPrivacyOptionsRequired()

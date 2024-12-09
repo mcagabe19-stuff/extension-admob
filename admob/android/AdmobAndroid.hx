@@ -4,7 +4,6 @@ package admob.android;
 import admob.android.util.JNICache;
 import admob.AdmobBannerAlign;
 import admob.AdmobBannerSize;
-import lime.app.Application;
 import lime.app.Event;
 import lime.utils.Log;
 
@@ -85,8 +84,9 @@ class AdmobAndroid
 	 * Loads an interstitial ad.
 	 *
 	 * @param id The interstitial ad ID.
+	 * @param immersiveModeEnabled Optional flag to enable immersive mode when the ad is displayed. Defaults to true.
 	 */
-	public static function loadInterstitial(id:String):Void
+	public static function loadInterstitial(id:String, ?immersiveModeEnabled:Bool = true):Void
 	{
 		if (!initialized)
 		{
@@ -97,7 +97,7 @@ class AdmobAndroid
 		final loadInterstitialJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadInterstitial', '(Ljava/lang/String;Z)V');
 
 		if (loadInterstitialJNI != null)
-			loadInterstitialJNI(id, (Application.current != null && Application.current.window != null) ? Application.current.window.fullscreen : false);
+			loadInterstitialJNI(id, immersiveModeEnabled);
 	}
 
 	/**
@@ -121,8 +121,9 @@ class AdmobAndroid
 	 * Loads a rewarded ad.
 	 *
 	 * @param id The rewarded ad ID.
+	 * @param immersiveModeEnabled Optional flag to enable immersive mode when the ad is displayed. Defaults to true.
 	 */
-	public static function loadRewarded(id:String):Void
+	public static function loadRewarded(id:String, ?immersiveModeEnabled:Bool = true):Void
 	{
 		if (!initialized)
 		{
@@ -133,7 +134,7 @@ class AdmobAndroid
 		final loadRewardedJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadRewarded', '(Ljava/lang/String;Z)V');
 
 		if (loadRewardedJNI != null)
-			loadRewardedJNI(id, (Application.current != null && Application.current.window != null) ? Application.current.window.fullscreen : false);
+			loadRewardedJNI(id, immersiveModeEnabled);
 	}
 
 	/**
@@ -157,8 +158,9 @@ class AdmobAndroid
 	 * Loads a "app open" ad.
 	 *
 	 * @param id The "app open" ad ID.
+	 * @param immersiveModeEnabled Optional flag to enable immersive mode when the ad is displayed. Defaults to true.
 	 */
-	public static function loadAppOpen(id:String):Void
+	public static function loadAppOpen(id:String, ?immersiveModeEnabled:Bool = true):Void
 	{
 		if (!initialized)
 		{
@@ -169,7 +171,7 @@ class AdmobAndroid
 		final loadAppOpenJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadAppOpen', '(Ljava/lang/String;Z)V');
 
 		if (loadAppOpenJNI != null)
-			loadAppOpenJNI(id, (Application.current != null && Application.current.window != null) ? Application.current.window.fullscreen : false);
+			loadAppOpenJNI(id, immersiveModeEnabled);
 	}
 
 	/**

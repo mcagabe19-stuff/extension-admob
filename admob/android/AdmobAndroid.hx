@@ -4,6 +4,7 @@ package admob.android;
 import admob.android.util.JNICache;
 import admob.AdmobBannerAlign;
 import admob.AdmobBannerSize;
+import lime.app.Application;
 import lime.app.Event;
 import lime.utils.Log;
 
@@ -93,10 +94,10 @@ class AdmobAndroid
 			return;
 		}
 
-		final loadInterstitialJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadInterstitial', '(Ljava/lang/String;)V');
+		final loadInterstitialJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadInterstitial', '(Ljava/lang/String;Z)V');
 
 		if (loadInterstitialJNI != null)
-			loadInterstitialJNI(id);
+			loadInterstitialJNI(id, (Application.current != null && Application.current.window != null) ? Application.current.window.fullscreen : false);
 	}
 
 	/**
@@ -129,10 +130,10 @@ class AdmobAndroid
 			return;
 		}
 
-		final loadRewardedJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadRewarded', '(Ljava/lang/String;)V');
+		final loadRewardedJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadRewarded', '(Ljava/lang/String;Z)V');
 
 		if (loadRewardedJNI != null)
-			loadRewardedJNI(id);
+			loadRewardedJNI(id, (Application.current != null && Application.current.window != null) ? Application.current.window.fullscreen : false);
 	}
 
 	/**
@@ -165,10 +166,10 @@ class AdmobAndroid
 			return;
 		}
 
-		final loadAppOpenJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadAppOpen', '(Ljava/lang/String;)V');
+		final loadAppOpenJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Admob', 'loadAppOpen', '(Ljava/lang/String;Z)V');
 
 		if (loadAppOpenJNI != null)
-			loadAppOpenJNI(id);
+			loadAppOpenJNI(id, (Application.current != null && Application.current.window != null) ? Application.current.window.fullscreen : false);
 	}
 
 	/**

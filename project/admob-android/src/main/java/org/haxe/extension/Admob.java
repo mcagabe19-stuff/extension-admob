@@ -263,7 +263,7 @@ public class Admob extends Extension
 		}
 	}
 
-	public static void loadInterstitial(final String id)
+	public static void loadInterstitial(final String id, final boolean immersiveModeEnabled)
 	{
 		mainActivity.runOnUiThread(new Runnable()
 		{
@@ -275,7 +275,7 @@ public class Admob extends Extension
 					public void onAdLoaded(InterstitialAd interstitialAd)
 					{
 						interstitial = interstitialAd;
-						interstitial.setImmersiveMode((mainActivity.getWindow().getDecorView().getSystemUiVisibility() & (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)) == (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION));
+						interstitial.setImmersiveMode(immersiveModeEnabled);
 						interstitial.setFullScreenContentCallback(new FullScreenContentCallback()
 						{
 							@Override
@@ -338,7 +338,7 @@ public class Admob extends Extension
 		}
 	}
 
-	public static void loadRewarded(final String id)
+	public static void loadRewarded(final String id, final boolean immersiveModeEnabled)
 	{
 		mainActivity.runOnUiThread(new Runnable()
 		{
@@ -350,7 +350,7 @@ public class Admob extends Extension
 					public void onAdLoaded(RewardedAd rewardedAd)
 					{
 						rewarded = rewardedAd;
-						rewarded.setImmersiveMode((mainActivity.getWindow().getDecorView().getSystemUiVisibility() & (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)) == (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION));
+						rewarded.setImmersiveMode(immersiveModeEnabled);
 						rewarded.setFullScreenContentCallback(new FullScreenContentCallback()
 						{
 							@Override
@@ -417,7 +417,7 @@ public class Admob extends Extension
 			callback.call("onStatus", new Object[] { "REWARDED_FAILED_TO_SHOW", "You need to load rewarded ad first!" });
 	}
 
-	public static void loadAppOpen(final String id)
+	public static void loadAppOpen(final String id, final boolean immersiveModeEnabled)
 	{
 		mainActivity.runOnUiThread(new Runnable()
 		{
@@ -430,7 +430,7 @@ public class Admob extends Extension
 					public void onAdLoaded(AppOpenAd ad)
 					{
 						appOpen = ad;
-						appOpen.setImmersiveMode((mainActivity.getWindow().getDecorView().getSystemUiVisibility() & (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)) == (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION));
+						appOpen.setImmersiveMode(immersiveModeEnabled);
 						appOpen.setFullScreenContentCallback(new FullScreenContentCallback()
 						{
 							@Override

@@ -21,7 +21,6 @@ import org.haxe.extension.Extension;
 import org.haxe.lime.HaxeObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,7 +118,7 @@ public class Admob extends Extension
 			{
 				StringBuilder hexString = new StringBuilder();
 
-				for (byte b : MessageDigest.getInstance("MD5").digest(Settings.Secure.getString(mainActivity.getContentResolver(), Secure.ANDROID_ID).getBytes()))
+				for (byte b : MessageDigest.getInstance("MD5").digest(Settings.Secure.getString(mainActivity.getContentResolver(), Settings.Secure.ANDROID_ID).getBytes()))
 					hexString.append(String.format("%02x", b));
 
 				testDeviceIds.add(hexString.toString().toUpperCase());
